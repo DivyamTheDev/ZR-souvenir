@@ -4,7 +4,10 @@ Welcome to the **Z&R Paris Souvenir** website repository! This is a modern, eleg
 
 ## 📸 Sneak Peek
 
-Here are some glimpses of the aesthetics and experiences we offer:
+Here is a full preview of the website's design and then some glimpses of the aesthetics we offer:
+
+### Full Website Preview
+![Website Screenshot](assets/screenshot-hero.png)
 
 ### The Vibe
 ![Hero Background](assets/hero-bg.webp)
