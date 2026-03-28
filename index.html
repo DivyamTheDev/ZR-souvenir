@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z&R Paris Souvenir - Authentic Parisian Keepsakes</title>
+    <meta name="description" content="Authentic souvenirs in the heart of Paris. Find the perfect Eiffel Tower keepsake, apparel, and gifts at Z&R Paris Souvenir.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 data-en="Your Cart" data-fr="Votre Panier">Your Cart</h3>
+            <button class="close-cart" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cartItems">
+            <p class="empty-cart" data-en="Your cart is currently empty." data-fr="Votre panier est actuellement vide.">Your cart is currently empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span data-en="Total:" data-fr="Total :">Total:</span> <span id="cartTotalPrice">€0.00</span>
+            </div>
+            <button class="btn btn-primary fluid" data-en="Checkout" data-fr="Payer" id="checkoutBtn">Checkout</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Floating UI Elements -->
+    <div class="floating-controls">
+        <button id="musicToggle" class="float-btn" title="Toggle background music">
+            <i class="fa-solid fa-music"></i>
+        </button>
+        <a href="https://wa.me/1234567890" target="_blank" class="float-btn whatsapp-btn" title="Chat with us on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Audio Player (Hidden) -->
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=paris-cafe-10023.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#">Z&<span>R</span></a>
+                <span class="brand-sub">Paris</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home" data-en="Home" data-fr="Accueil">Home</a>
+                <a href="#shop" data-en="Shop" data-fr="Boutique">Shop</a>
+                <a href="#about" data-en="About" data-fr="À Propos">About</a>
+                <a href="#experience" data-en="Experience" data-fr="Expérience">Experience</a>
+                <a href="#visit" data-en="Visit Us" data-fr="Contact">Visit Us</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="lang-toggle" id="langToggle">
+                    <span class="active">EN</span> / <span>FR</span>
+                </div>
+                <div class="cart-icon" id="cartToggle">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </div>
+                <a href="#shop" class="btn btn-primary d-none-mobile" data-en="Shop Now" data-fr="Achetez">Shop Now</a>
+                <button class="mobile-menu-btn" id="mobileMenuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" data-en="Home" data-fr="Accueil">Home</a>
+            <a href="#shop" data-en="Shop" data-fr="Boutique">Shop</a>
+            <a href="#about" data-en="About" data-fr="À Propos">About</a>
+            <a href="#experience" data-en="Experience" data-fr="Expérience">Experience</a>
+            <a href="#visit" data-en="Visit Us" data-fr="Contact">Visit Us</a>
+            <a href="#shop" class="btn btn-primary fluid" data-en="Shop Now" data-fr="Achetez">Shop Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero section-reveal">
+        <div class="hero-bg" style="background-image: url('assets/hero-bg.webp');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title" data-en="Take a Piece of Paris Home 🇫🇷" data-fr="Ramenez un morceau de Paris 🇫🇷">Take a Piece of Paris Home 🇫🇷</h1>
+            <p class="hero-subtitle" data-en="Authentic souvenirs in the heart of Paris" data-fr="Des souvenirs authentiques au cœur de Paris">
+                Authentic souvenirs in the heart of Paris
+            </p>
+            <div class="hero-ctas">
+                <a href="#shop" class="btn btn-gold" data-en="Shop Now" data-fr="Achetez maintenant">Shop Now</a>
+                <a href="#visit" class="btn btn-outline-white" data-en="Visit Store" data-fr="Visitez la boutique">Visit Store</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Products -->
+    <section id="shop" class="section featured-products">
+        <div class="container section-reveal">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Featured Souvenirs" data-fr="Souvenirs en Vedette">Featured Souvenirs</h2>
+                <div class="title-divider"></div>
+                <p class="section-desc" data-en="Handpicked gifts and keepsakes that capture the eternal charm of France." data-fr="Des cadeaux choisis pour capturer le charme éternel de la France.">Handpicked gifts and keepsakes that capture the eternal charm of France.</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <!-- Local asset -->
+                        <img src="assets/gallery.webp" alt="Eiffel Tower Model" class="product-img">
+                        <div class="product-overlay">
+                            <button class="btn btn-quickview" data-en='<i class="fa-regular fa-eye"></i> Quick View' data-fr='<i class="fa-regular fa-eye"></i> Aperçu rapide'><i class="fa-regular fa-eye"></i> Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category" data-en="Miniatures" data-fr="Miniatures">Miniatures</span>
+                        <h3 class="product-name" data-en="Bronze Eiffel Tower (15cm)" data-fr="Tour Eiffel en Bronze (15cm)">Bronze Eiffel Tower (15cm)</h3>
+                        <p class="product-price">€24.99</p>
+                        <button class="btn btn-add-cart" data-en="Add to Cart" data-fr="Ajouter">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/store-interior.webp" alt="Paris Keychain Set" class="product-img">
+                        <div class="product-overlay">
+                            <button class="btn btn-quickview" data-en='<i class="fa-regular fa-eye"></i> Quick View' data-fr='<i class="fa-regular fa-eye"></i> Aperçu rapide'><i class="fa-regular fa-eye"></i> Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category" data-en="Accessories" data-fr="Accessoires">Accessories</span>
+                        <h3 class="product-name" data-en="Macaron Keychain Set" data-fr="Porte-clés Macarons">Macaron Keychain Set</h3>
+                        <p class="product-price">€12.50</p>
+                        <button class="btn btn-add-cart" data-en="Add to Cart" data-fr="Ajouter">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://picsum.photos/id/26/600/600" alt="Paris Apparel" class="product-img">
+                        <div class="product-overlay">
+                            <button class="btn btn-quickview" data-en='<i class="fa-regular fa-eye"></i> Quick View' data-fr='<i class="fa-regular fa-eye"></i> Aperçu rapide'><i class="fa-regular fa-eye"></i> Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category" data-en="Apparel" data-fr="Vêtements">Apparel</span>
+                        <h3 class="product-name" data-en="Classic Paris Tote Bag" data-fr="Sac Cabas Classique Paris">Classic Paris Tote Bag</h3>
+                        <p class="product-price">€18.00</p>
+                        <button class="btn btn-add-cart" data-en="Add to Cart" data-fr="Ajouter">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="assets/hero-bg.webp" alt="Paris Gift Set" class="product-img">
+                        <div class="product-overlay">
+                             <button class="btn btn-quickview" data-en='<i class="fa-regular fa-eye"></i> Quick View' data-fr='<i class="fa-regular fa-eye"></i> Aperçu rapide'><i class="fa-regular fa-eye"></i> Quick View</button>
+                        </div>
+                        <span class="product-badge" data-en="Best Seller" data-fr="Le plus vendu">Best Seller</span>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category" data-en="Gift Sets" data-fr="Coffrets">Gift Sets</span>
+                        <h3 class="product-name" data-en="Deluxe Paris Memory Box" data-fr="Boîte Souvenir Luxe Paris">Deluxe Paris Memory Box</h3>
+                        <p class="product-price">€45.00</p>
+                        <button class="btn btn-add-cart" data-en="Add to Cart" data-fr="Ajouter">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-40">
+                <a href="#shop" class="btn btn-outline" data-en="View All Collection" data-fr="Voir toute la collection">View All Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-store bg-light">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image section-reveal">
+                    <img src="assets/store-interior.webp" alt="Inside Z&R Paris Souvenir">
+                    <div class="experience-badge">
+                        <span class="number">10+</span>
+                        <span class="text" data-en="Years of<br>Excellence" data-fr="Années<br>d'Excellence">Years of<br>Excellence</span>
+                    </div>
+                </div>
+                <div class="about-content section-reveal" style="transition-delay: 200ms;">
+                    <span class="subtitle-gold" data-en="Our Story" data-fr="Notre Histoire">Our Story</span>
+                    <h2 class="section-title text-left" data-en="The Essence of Paris in Every Keepsake" data-fr="L'essence de Paris dans chaque souvenir">The Essence of Paris in Every Keepsake</h2>
+                    <p class="lead-text" data-en="Located in central Paris, Z&R Paris Souvenir offers handpicked keepsakes that capture the profound charm of France." data-fr="Situés au centre de Paris, nous proposons des souvenirs triés sur le volet.">Located in central Paris, Z&R Paris Souvenir offers handpicked keepsakes that capture the profound charm of France.</p>
+                    <p data-en="Whether you're looking for a delicate piece of jewelry, artisanal treats, or the perfect miniature tower to sit on your desk, our curated selection is designed to help you treasure your Parisian memories forever." data-fr="Que vous recherchiez un bijou, des friandises, ou la tour miniature, notre sélection soignée est là pour vous.">Whether you're looking for a delicate piece of jewelry, artisanal treats, or the perfect miniature tower to sit on your desk, our curated selection is designed to help you treasure your Parisian memories forever.</p>
+                    <ul class="feature-list">
+                        <li data-en='<i class="fa-solid fa-check text-gold"></i> Curated luxury & street souvenir mix' data-fr='<i class="fa-solid fa-check text-gold"></i> Mélange de luxe et de souvenirs typiques'><i class="fa-solid fa-check text-gold"></i> Curated luxury & street souvenir mix</li>
+                        <li data-en='<i class="fa-solid fa-check text-gold"></i> Quality craftsmanship' data-fr='<i class="fa-solid fa-check text-gold"></i> Artisanat de qualité'><i class="fa-solid fa-check text-gold"></i> Quality craftsmanship</li>
+                        <li data-en='<i class="fa-solid fa-check text-gold"></i> Welcoming multilingual staff' data-fr='<i class="fa-solid fa-check text-gold"></i> Personnel multilingue accueillant'><i class="fa-solid fa-check text-gold"></i> Welcoming multilingual staff</li>
+                    </ul>
+                    <a href="#visit" class="btn btn-primary mt-20" data-en="Discover Our Store" data-fr="Découvrir la Boutique">Discover Our Store</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Experience -->
+    <section id="experience" class="section gallery-section">
+        <div class="container section-reveal">
+            <div class="section-header">
+                <h2 class="section-title" data-en="The Z&R Experience" data-fr="L'Expérience Z&R">The Z&R Experience</h2>
+                <div class="title-divider"></div>
+            </div>
+            
+            <div class="masonry-gallery">
+                <div class="gallery-item item-large">
+                    <img src="assets/store-interior.webp" alt="Store Interior">
+                    <div class="gallery-overlay"><span data-en="Store Ambience" data-fr="Ambiance Magasin">Store Ambience</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/gallery.webp" alt="Product Setup">
+                    <div class="gallery-overlay"><span data-en="Our Collection" data-fr="Notre Collection">Our Collection</span></div>
+                </div>
+                <div class="gallery-item item-tall">
+                    <img src="assets/hero-bg.webp" alt="External View">
+                    <div class="gallery-overlay"><span data-en="Iconic Location" data-fr="Lieu Emblématique">Iconic Location</span></div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Updated with picsum for variety -->
+                    <img src="https://picsum.photos/id/119/500/500" alt="Parisian Details">
+                    <div class="gallery-overlay"><span data-en="French Elegance" data-fr="Élégance Française">French Elegance</span></div>
+                </div>
+                <div class="gallery-item item-wide">
+                     <!-- Updated with picsum for variety -->
+                    <img src="https://picsum.photos/id/122/800/500" alt="Eiffel View">
+                    <div class="gallery-overlay"><span data-en="Heart of Paris" data-fr="Cœur de Paris">Heart of Paris</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section features bg-dark text-white">
+        <div class="container section-reveal">
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-gift"></i></div>
+                    <h3 data-en="Authentic Gifts" data-fr="Cadeaux Authentiques">Authentic Gifts</h3>
+                    <p data-en="Carefully sourced products reflecting genuine French culture." data-fr="Produits soigneusement sélectionnés reflétant la culture française.">Carefully sourced products reflecting genuine French culture.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-tags"></i></div>
+                    <h3 data-en="Affordable Pricing" data-fr="Prix Abordables">Affordable Pricing</h3>
+                    <p data-en="Luxury experience and quality without the exorbitant price tags." data-fr="Expérience de luxe et qualité sans coûts exorbitants.">Luxury experience and quality without the exorbitant price tags.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <h3 data-en="Prime Location" data-fr="Lieu Idéal">Prime Location</h3>
+                    <p data-en="Easily accessible in the heart of Paris, next to major attractions." data-fr="Facilement accessible, au coeur de Paris.">Easily accessible in the heart of Paris, next to major attractions.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3 data-en="Wide Variety" data-fr="Grande Variété">Wide Variety</h3>
+                    <p data-en="From apparel to gourmet treats, find something for everyone." data-fr="Des vêtements aux friandises, il y en a pour tous les goûts.">From apparel to gourmet treats, find something for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="section testimonials">
+        <div class="container section-reveal">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Loved by Travelers" data-fr="Aimé par les Voyageurs">Loved by Travelers</h2>
+                <div class="title-divider"></div>
+            </div>
+            
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text" data-en="Beautiful store! The souvenirs are such high quality. The staff helped me pack my delicate items carefully for the flight back to New York." data-fr="Magnifique boutique ! Les souvenirs sont d'une grande qualité. Le personnel m'a aidé à emballer avec soin mes articles fragiles.">"Beautiful store! The souvenirs are such high quality. The staff helped me pack my delicate items carefully for the flight back to New York."</p>
+                    <div class="reviewer">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="reviewer-img">
+                        <div class="reviewer-info">
+                            <h4>Sarah J.</h4>
+                            <span class="country">USA 🇺🇸</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text" data-en="Found exactly what I was looking for. They have a great collection of elegant souvenirs that don't look cheap. Highly recommend stopping by!" data-fr="J'ai trouvé exactement ce que je cherchais. Ils ont une belle collection de souvenirs élégants.">"Found exactly what I was looking for. They have a great collection of elegant souvenirs that don't look cheap. Highly recommend stopping by!"</p>
+                    <div class="reviewer">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rajeev M." class="reviewer-img">
+                        <div class="reviewer-info">
+                            <h4>Rajeev M.</h4>
+                            <span class="country">India 🇮🇳</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="review-text" data-en="Lovely aesthetic inside the shop. Bought some amazing keychains and a beautiful scarf. The customer service is absolutely top-notch." data-fr="Superbe esthétique de la boutique. J'ai acheté de magnifiques porte-clés et une écharpe. Service au top.">"Lovely aesthetic inside the shop. Bought some amazing keychains and a beautiful scarf. The customer service is absolutely top-notch."</p>
+                    <div class="reviewer">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma T." class="reviewer-img">
+                        <div class="reviewer-info">
+                            <h4>Emma T.</h4>
+                            <span class="country">UK 🇬🇧</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Us -->
+    <section id="visit" class="section visit-us">
+        <div class="container section-reveal">
+            <div class="visit-grid">
+                <div class="visit-info">
+                    <h2 class="section-title text-left" data-en="Visit Us in Paris" data-fr="Rencontrons-nous à Paris">Visit Us in Paris</h2>
+                    <p class="visit-desc" data-en="Step into our beautifully designed store to experience the true charm of Paris. We're open daily to help you find the perfect memory to take home." data-fr="Entrez dans notre magasin conçu avec amour pour découvrir le charme de Paris.">Step into our beautifully designed store to experience the true charm of Paris. We're open daily to help you find the perfect memory to take home.</p>
+                    
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4 data-en="Address" data-fr="Adresse">Address</h4>
+                            <p>15 Rue des Innocents, 75001 Paris, France</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <div>
+                            <h4 data-en="Opening Hours" data-fr="Horaires">Opening Hours</h4>
+                            <p data-en="Monday - Sunday: 9:00 AM - 10:00 PM" data-fr="Lundi - Dimanche : 9h00 - 22h00">Monday - Sunday: 9:00 AM - 10:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h4 data-en="Contact" data-fr="Nous Contacter">Contact</h4>
+                            <p>+33 1 23 45 67 89</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://maps.google.com/?q=15+Rue+des+Innocents,+75001+Paris" target="_blank" class="btn btn-primary mt-20" data-en='<i class="fa-solid fa-map"></i> Get Directions' data-fr='<i class="fa-solid fa-map"></i> Itinéraire'><i class="fa-solid fa-map"></i> Get Directions</a>
+                </div>
+                <div class="visit-map">
+                    <!-- OpenStreetMap Embed for 15 Rue des Innocents, Paris -->
+                    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=2.342%2C48.858%2C2.350%2C48.863&amp;layer=mapnik&amp;marker=48.8604928%2C2.3458643" style="border: 1px solid black"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>Z&<span>R</span></h2>
+                    <p>Paris Souvenir</p>
+                    <p class="footer-desc" data-en="Curating authentic and luxurious memories from the heart of Paris for travelers around the world." data-fr="Préserver l'authenticité et le luxe au cœur de Paris pour tous les voyageurs.">Curating authentic and luxurious memories from the heart of Paris for travelers around the world.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 data-en="Quick Links" data-fr="Liens Rapides">Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" data-en="Home" data-fr="Accueil">Home</a></li>
+                        <li><a href="#shop" data-en="Online Shop" data-fr="Boutique">Online Shop</a></li>
+                        <li><a href="#about" data-en="About Us" data-fr="À Propos">About Us</a></li>
+                        <li><a href="#experience" data-en="Gallery" data-fr="Galerie">Gallery</a></li>
+                        <li><a href="#visit" data-en="Contact" data-fr="Contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3 data-en="Customer Service" data-fr="Service Client">Customer Service</h3>
+                    <ul>
+                        <li><a href="#" data-en="Shipping Policy" data-fr="Livraisons">Shipping Policy</a></li>
+                        <li><a href="#" data-en="Returns & Exchanges" data-fr="Retours">Returns & Exchanges</a></li>
+                        <li><a href="#" data-en="FAQ" data-fr="FAQ">FAQ</a></li>
+                        <li><a href="#" data-en="Terms & Conditions" data-fr="Mentions Légales">Terms & Conditions</a></li>
+                        <li><a href="#" data-en="Privacy Policy" data-fr="Confidentialité">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3 data-en="Stay Connected" data-fr="Abonnez-vous">Stay Connected</h3>
+                    <p data-en="Subscribe to our newsletter for new arrivals and exclusive Parisian offers." data-fr="Inscrivez-vous pour rater aucune de nos offres.">Subscribe to our newsletter for new arrivals and exclusive Parisian offers.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                        <input type="email" placeholder="Your email address" data-en="Your email address" data-fr="Votre email" required>
+                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Z&R Paris Souvenir. All Rights Reserved.</p>
+                <p class="made-with" data-en='Made with <i class="fa-solid fa-heart" style="color: #e25555;"></i> in Paris' data-fr='Fait avec <i class="fa-solid fa-heart" style="color: #e25555;"></i> à Paris'>Made with <i class="fa-solid fa-heart" style="color: #e25555;"></i> in Paris</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
